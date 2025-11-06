@@ -75,12 +75,12 @@ jobs:
       - name: 多线程编译 ImmortalWrt (Build ImmortalWrt multithreading)
         if: ${{inputs.multithreading == true}}
         working-directory: ImmortalWrt
-        run: make -j$(nproc) V=s
+        run: make -j$(nproc) V=s FORCE=1
 
       - name: 单线程编译 ImmortalWrt (Build ImmortalWrt single thread)
         if: ${{inputs.multithreading == false}}
         working-directory: ImmortalWrt
-        run: make -j1 V=s
+        run: make -j1 V=s FORCE=1
 
       - name: 上传编译结果到 Artifact (Upload build result to Artifact)
         uses: actions/upload-artifact@v4
